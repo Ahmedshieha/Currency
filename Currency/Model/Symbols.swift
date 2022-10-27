@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Welcome: Codable {
+struct Symbols: Codable {
     let success: Bool
-    let symbols: [String: String]
+    let symbols: [String:String]
 }
