@@ -10,6 +10,7 @@ import RxSwift
 import RxCocoa
 import Foundation
 import DropDown
+import Alamofire
 
 class ViewController: UIViewController {
    
@@ -35,12 +36,11 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        getSymbols()
-        bindToPickerViews()
+//        getSymbols()
+//        bindToPickerViews()
 //        select()
         getSelected()
-//        bindResultToLable()
-        
+        bindResultToLable()
         bindAmountTextFieldToViewModel()
         convertWhenChangeAmount()
         
@@ -65,11 +65,11 @@ class ViewController: UIViewController {
     
     func bindResultToLable() {
         
+        self.symbolsViewModel.labelSubject.asObservable().map{text -> String? in
+            return Optional(text)
+        }.bind(to:self.lable.rx.text)
+            .disposed(by: disposeBag)
         
-        
-//        self.symbolsViewModel.labelSubject.asObservable().map { double in
-//                return String(double)
-//        }.bind(to:self.lable.rx.text).disposed(by: disposeBag)
     }
     func bindAmountTextFieldToViewModel(){
         amountTextField.rx.text.orEmpty.bind(to: symbolsViewModel.amountTextFieldBehavior).disposed(by: disposeBag)
@@ -89,13 +89,12 @@ class ViewController: UIViewController {
         }.disposed(by: disposeBag)
         }
     
-    
+
     
     func getSelected() {
         toPickerView.rx.modelSelected(String.self).subscribe {(event) in
-            print(event.element ?? "")
 
-        }
+        }.disposed(by: disposeBag)
         
        }
 }
