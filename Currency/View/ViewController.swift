@@ -12,6 +12,11 @@ import Foundation
 import DropDown
 
 class ViewController: UIViewController {
+   
+    
+  
+    @IBOutlet weak var amountTextField: UITextField!
+    
     
     
     
@@ -24,79 +29,73 @@ class ViewController: UIViewController {
     let dropDown = DropDown()
     
     @IBOutlet weak var lable: UILabel!
-    @IBOutlet weak var vDropDown: UIView!
+ 
     var array  = Observable.of([:])
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-//        getSymbols()
-//        bindToPickerViews()
+        
+        getSymbols()
+        bindToPickerViews()
 //        select()
-//                getSelected()
-        let testConvert = ApiService()
-        testConvert.conver { result in
-            switch result {
-            case.success(let converter ) :
-                print(converter.result)
-            case.failure(let error):
-                print(error.localizedDescription)
-                
-            }
-        }
+        getSelected()
+//        bindResultToLable()
+        
+        bindAmountTextFieldToViewModel()
+        convertWhenChangeAmount()
+        
+        
     }
     
-    @IBAction func showDropDown(_ sender: Any) {
-        dropDown.show()
+  
+  func convertWhenChangeAmount() {
+        amountTextField.rx.controlEvent([.editingChanged]).asObservable().subscribe({[unowned self] _ in
+            converter()
+        }).disposed(by: disposeBag)
     }
+    
     //    get symbols from viewModel
     func getSymbols () {
         symbolsViewModel.fetchSymbolsFromApi()
+    }
+    
+    func converter() {
+        symbolsViewModel.convertCurrency()
+    }
+    
+    func bindResultToLable() {
+        
+        
+        
+//        self.symbolsViewModel.labelSubject.asObservable().map { double in
+//                return String(double)
+//        }.bind(to:self.lable.rx.text).disposed(by: disposeBag)
+    }
+    func bindAmountTextFieldToViewModel(){
+        amountTextField.rx.text.orEmpty.bind(to: symbolsViewModel.amountTextFieldBehavior).disposed(by: disposeBag)
     }
     
     //        bind data to pickerView with key or value
     
     
     func bindToPickerViews() {
-                
         symbolsViewModel.symbolsSubject.bind(to:frompickerView.rx.itemTitles) {(row , element) in
-            return element.key
-
+            return element
         }.disposed(by: disposeBag)
 
+        
         symbolsViewModel.symbolsSubject.bind(to:toPickerView.rx.itemTitles) {(row , element) in
-            return element.key
+            return element
         }.disposed(by: disposeBag)
         }
     
     
-    
-//    func select () {
-//
-//        frompickerView.rx.itemSelected.subscribe { (event) in
-//
-//            switch event {
-//
-//            case.next(let selected) :
-//                self.lable.text = String(selected.row)
-//                print(selected.row)
-//
-//            default:
-//                break
-//            }
-//        }.disposed(by: disposeBag)
-//
-//
-//    }
     
     func getSelected() {
-        toPickerView.rx.modelSelected(NSDictionary.self).subscribe {(event) in
-            
-            switch event {
-            case.next(let value) :
-                print(value)
-            default:
-                break
-            }
+        toPickerView.rx.modelSelected(String.self).subscribe {(event) in
+            print(event.element ?? "")
+
         }
+        
        }
 }

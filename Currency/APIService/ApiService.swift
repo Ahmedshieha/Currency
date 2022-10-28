@@ -40,8 +40,8 @@ class ApiService {
         }
     }
     
-    func conver(compoletion : @escaping (Result<Converter,Error> ) -> Void) {
-        provider.request(.converter(1, "USD", "EGP")) { result in
+    func convertCurrency(amount : Int , from : String , to : String ,compoletion : @escaping (Result<Converter,Error> ) -> Void) {
+        provider.request(.converter(amount, from , to)) { result in
             switch result {
             case.success(let response):
                 do {
