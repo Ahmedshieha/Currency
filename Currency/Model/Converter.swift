@@ -7,7 +7,7 @@
 
 import Foundation
 struct Converter: Codable {
-    let date, historical: String
+    let date: String
     let info: Info
     let query: Query
     let result: Double

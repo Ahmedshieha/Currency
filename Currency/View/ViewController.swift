@@ -29,10 +29,20 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        getSymbols()
-        bindToPickerViews()
+//        getSymbols()
+//        bindToPickerViews()
 //        select()
-                getSelected()
+//                getSelected()
+        let testConvert = ApiService()
+        testConvert.conver { result in
+            switch result {
+            case.success(let converter ) :
+                print(converter.result)
+            case.failure(let error):
+                print(error.localizedDescription)
+                
+            }
+        }
     }
     
     @IBAction func showDropDown(_ sender: Any) {

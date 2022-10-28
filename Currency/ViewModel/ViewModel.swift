@@ -19,7 +19,7 @@ class SymbolViewModel {
             case.success(let symbols) :
 //                guard let symbols = symbols else {return}
                 self.symbolsSubject.onNext(symbols)
-                print(symbols)
+//                print(symbols)
             case.failure(let error) :
                 print(error.localizedDescription)
             }
