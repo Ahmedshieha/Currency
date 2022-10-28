@@ -11,14 +11,15 @@ import RxCocoa
 class SymbolViewModel {
     
 
-    var symbolsSubject = BehaviorSubject(value: ["":""])
-
-    
-    func fetchSymbolsFromApi () {
-        ApiService.shared.getSymbols { result  in
+    var symbolsSubject = PublishSubject<[String:String]>()
+        func fetchSymbolsFromApi () {
+        
+        ApiService.shared.getSymbolsWithMoya { result  in
             switch result {
             case.success(let symbols) :
-                self.symbolsSubject.onNext(symbols.symbols)
+//                guard let symbols = symbols else {return}
+                self.symbolsSubject.onNext(symbols)
+                print(symbols)
             case.failure(let error) :
                 print(error.localizedDescription)
             }

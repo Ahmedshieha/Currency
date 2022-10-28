@@ -9,5 +9,6 @@ import Foundation
 
 enum EndPoints : String {
    case symbols = "https://api.apilayer.com/fixer/symbols"
+    case converter = "https://api.apilayer.com/fixer/convert"
 
 }

@@ -8,13 +8,13 @@
 import Foundation
 import RxSwift
 import RxCocoa
-
+import Moya
 class ApiService {
     static let shared = ApiService()
     
     
     
-    func getSymbols(completion : @escaping (Result <Symbols , Error>)-> Void) {
+    func getSymbols(completion : @escaping (Result <[String:String] , Error>)-> Void) {
         var request = URLRequest(url: URL(string: EndPoints.symbols.rawValue)!)
         request.httpMethod = "GET"
         request.addValue("3wy3tlRKIjiPmzwWZ5SHjufdGkEvjFJv", forHTTPHeaderField: "apikey")
@@ -40,8 +40,10 @@ class ApiService {
             do {
                 let jsonData = try JSONDecoder().decode(Symbols.self, from: data)
                 
+                DispatchQueue.main.async {
+                    completion(.success(jsonData.symbols))
+                }
                 
-                    completion(.success(jsonData))
                 
             }
             catch let error {
@@ -50,6 +52,28 @@ class ApiService {
             
             
         }.resume()
+    }
+    let provider = MoyaProvider<DataService>()
+    func getSymbolsWithMoya(completion : @escaping (Result <[String:String] , Error>)-> Void) {
+        provider.request(.getSymbols) { result in
+            switch result {
+            case.success(let response) :
+                do {
+                    let jsonData = try JSONDecoder().decode(Symbols.self, from: response.data)
+                    completion(.success(jsonData.symbols))
+                    
+                }
+                catch let error {
+                    print(error.localizedDescription)
+                }
+            case.failure(let error) :
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func conver() {
+        
     }
     
     
