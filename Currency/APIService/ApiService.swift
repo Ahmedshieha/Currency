@@ -6,7 +6,8 @@
 //
 
 import Foundation
-
+import RxSwift
+import RxCocoa
 
 class ApiService {
     static let shared = ApiService()
@@ -39,9 +40,9 @@ class ApiService {
             do {
                 let jsonData = try JSONDecoder().decode(Symbols.self, from: data)
                 
-                DispatchQueue.main.async {
+                
                     completion(.success(jsonData))
-                }
+                
             }
             catch let error {
                 completion(.failure(error))
@@ -50,6 +51,7 @@ class ApiService {
             
         }.resume()
     }
+    
     
     
 }

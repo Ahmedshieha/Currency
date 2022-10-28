@@ -6,30 +6,42 @@
 //
 
 import UIKit
-
+import RxSwift
+import RxCocoa
+import Foundation
 class ViewController: UIViewController {
-
+    
+    
+    
+    @IBOutlet weak var frompickerView: UIPickerView!
+    @IBOutlet weak var toPickerView: UIPickerView!
+    
+    
+    let disposeBag = DisposeBag()
+    let symbolsViewModel = SymbolViewModel()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        getData()
+        getSymbols()
+        bindToPickerViews()
     }
-
     
-    func getData () {
-        ApiService.shared.getSymbols { result  in
-            switch result {
-            case.success(let symbols) :
-                for symbol in symbols.symbols {
-                    print(symbol.key)
-                }
-//                print(symbols)
-            case.failure(let error) :
-                print(error.localizedDescription)
-            }
-            
-        }
+    
+    func getSymbols () {
+        symbolsViewModel.getData()
     }
-
+    
+    func bindToPickerViews() {
+        symbolsViewModel.testSymbols.bind(to:frompickerView.rx.itemTitles) {(row , element) in
+            return element.key
+        }.disposed(by: disposeBag)
+        symbolsViewModel.testSymbols.bind(to:toPickerView.rx.itemTitles) {(row , element) in
+            return element.key
+        }.disposed(by: disposeBag)
+    }
+    
+    
 }
 
