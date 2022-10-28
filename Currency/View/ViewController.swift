@@ -28,16 +28,20 @@ class ViewController: UIViewController {
         bindToPickerViews()
     }
     
-    
+    //    get symbols from viewModel
     func getSymbols () {
-        symbolsViewModel.getData()
+        symbolsViewModel.fetchSymbolsFromApi()
     }
     
+    //        bind data to pickerView with key or value
     func bindToPickerViews() {
-        symbolsViewModel.testSymbols.bind(to:frompickerView.rx.itemTitles) {(row , element) in
+        
+        symbolsViewModel.symbolsSubject.bind(to:frompickerView.rx.itemTitles) {(row , element) in
             return element.key
         }.disposed(by: disposeBag)
-        symbolsViewModel.testSymbols.bind(to:toPickerView.rx.itemTitles) {(row , element) in
+        
+        
+        symbolsViewModel.symbolsSubject.bind(to:toPickerView.rx.itemTitles) {(row , element) in
             return element.key
         }.disposed(by: disposeBag)
     }
