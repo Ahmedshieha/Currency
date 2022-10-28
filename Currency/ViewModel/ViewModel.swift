@@ -13,8 +13,9 @@ class SymbolViewModel {
 
     var symbolsSubject = BehaviorRelay<[String]>(value: [""])
     
-    var amountTextFieldBehavior = BehaviorRelay<String>(value:"")
-    var labelSubject = BehaviorRelay<String>(value: "")
+    var fromTextFieldBehavior = BehaviorRelay<String>(value:"")
+    var toTextFieldBehavior = BehaviorRelay<String>(value:"")
+    var resultSubject = BehaviorRelay<String>(value: "")
     
     var fromPickerViewBehavior = BehaviorRelay<String>(value: "")
     var toPickerViewBehavior = BehaviorRelay<String>(value: "")
@@ -33,15 +34,16 @@ class SymbolViewModel {
         }
     }
     
-    func convertCurrency () {
-        ApiService.shared.convertCurrency(amount: Int(amountTextFieldBehavior.value) ?? 0, from: "USD", to: "EGP") { result in
+    func convertCurrencyFromTo () {
+        ApiService.shared.convertCurrency(amount: Int(fromTextFieldBehavior.value) ?? 0, from: "USD", to: "EGP") { result in
             switch result {
             case.success(let converter) :
-                self.labelSubject.accept(String(converter.result))
+                self.resultSubject.accept(String(converter.result))
             case.failure(let error):
                 print(error.localizedDescription)
             }
         }
     }
+
  
 }
