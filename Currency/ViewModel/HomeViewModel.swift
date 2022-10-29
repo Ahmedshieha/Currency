@@ -16,6 +16,7 @@ class HomeViewModel {
     
     var fromTextFieldBehavior = BehaviorRelay<String>(value:"")
     var toTextFieldBehavior = BehaviorRelay<String>(value:"")
+    
     var resultSubject = BehaviorRelay<String>(value: "")
     
     var fromPickerViewBehavior = BehaviorRelay<String>(value: "")

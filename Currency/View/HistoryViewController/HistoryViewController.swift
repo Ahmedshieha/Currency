@@ -11,6 +11,8 @@ import Foundation
 import RxSwift
 import RxCocoa
 
+
+
 class HistoryViewController: UIViewController {
 
     @IBOutlet weak var backButton: UIButton!
@@ -28,6 +30,8 @@ class HistoryViewController: UIViewController {
         retriveDataFromCoreData()
         subscribeToResponse()
     }
+    
+    
  
     func subscribeBackButton() {
         backButton.rx.tap.subscribe(onNext : { _ in
@@ -41,7 +45,7 @@ class HistoryViewController: UIViewController {
     }
     
     func subscribeToResponse() {
-        viewModel.transactionSubject.bind(to: self.historyTableView.rx.items(cellIdentifier: "HistoryTableViewCell", cellType: HistoryTableViewCell.self)) {(row , transaction , cell) in
+        viewModel.transactionSubject.bind(to: self.historyTableView.rx.items(cellIdentifier: "HistoryTableViewCell", cellType: HistoryTableViewCell.self)) {row , transaction , cell in
             cell.configureCell(from: transaction.from ?? "", to: transaction.to ?? "", amount: Int(transaction.amount), result: transaction.result)
         }.disposed(by: disposeBag)
         
@@ -50,6 +54,11 @@ class HistoryViewController: UIViewController {
     func retriveDataFromCoreData () {
         viewModel.retriveDataFromCoreData()
     }
+    
+    
+//    func sectionTable() {
+//        let dataSource = RxTableViewSectionedReloadDataSource
+//    }
 }
 
     

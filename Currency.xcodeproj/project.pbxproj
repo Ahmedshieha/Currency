@@ -10,7 +10,6 @@
 		829FBEBF32D1377C5F077DD6 /* Pods_CurrencyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 524ECA24BD7547796FA02DC3 /* Pods_CurrencyTests.framework */; };
 		A96A9C30DBB280F86B07D31E /* Pods_Currency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DC6DBAB22FD917F96F38597 /* Pods_Currency.framework */; };
 		FA02EF66290B3EBA00F77F4B /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA02EF65290B3EBA00F77F4B /* ApiService.swift */; };
-		FA02EF69290B3F1200F77F4B /* EndPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA02EF68290B3F1200F77F4B /* EndPoints.swift */; };
 		FA02EF6B290B419E00F77F4B /* Symbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA02EF6A290B419E00F77F4B /* Symbols.swift */; };
 		FA02EF6D290B484E00F77F4B /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA02EF6C290B484E00F77F4B /* HomeViewModel.swift */; };
 		FA3A01392909DD8E0080F89D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3A01382909DD8E0080F89D /* AppDelegate.swift */; };
@@ -66,7 +65,6 @@
 		87BAB0F60EE54C0B6951AC2C /* Pods-Currency.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Currency.release.xcconfig"; path = "Target Support Files/Pods-Currency/Pods-Currency.release.xcconfig"; sourceTree = "<group>"; };
 		96D1643403CA82C04AE4E48E /* Pods-CurrencyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CurrencyTests.release.xcconfig"; path = "Target Support Files/Pods-CurrencyTests/Pods-CurrencyTests.release.xcconfig"; sourceTree = "<group>"; };
 		FA02EF65290B3EBA00F77F4B /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
-		FA02EF68290B3F1200F77F4B /* EndPoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoints.swift; sourceTree = "<group>"; };
 		FA02EF6A290B419E00F77F4B /* Symbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Symbols.swift; sourceTree = "<group>"; };
 		FA02EF6C290B484E00F77F4B /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		FA3A01352909DD8E0080F89D /* Currency.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Currency.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -153,6 +151,7 @@
 			children = (
 				FA02EF6A290B419E00F77F4B /* Symbols.swift */,
 				FA9A86D7290C32E80072BF48 /* Converter.swift */,
+				FAA2285B290DA3B000D188B1 /* CoreDataModel */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -160,12 +159,10 @@
 		FA02EF62290B3E4000F77F4B /* View */ = {
 			isa = PBXGroup;
 			children = (
-				FAA2285E290DBC8800D188B1 /* Cells */,
-				FA3A013C2909DD8E0080F89D /* ViewController.swift */,
+				FAA22868290DD5D400D188B1 /* HomeViewController */,
 				FAA22847290D903400D188B1 /* conversionsDataModel.xcdatamodeld */,
-				FA3A013E2909DD8E0080F89D /* Main.storyboard */,
-				FAA2284A290D93F700D188B1 /* HistoryViewController.swift */,
-				FAA2284B290D93F700D188B1 /* HistoryViewController.xib */,
+				FAA22867290DD5BB00D188B1 /* HistoryViewController */,
+				FAA2285E290DBC8800D188B1 /* Cells */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -191,7 +188,6 @@
 		FA02EF67290B3EFF00F77F4B /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				FA02EF68290B3F1200F77F4B /* EndPoints.swift */,
 				FA9A86DD290C4DD50072BF48 /* jsonData.swift */,
 				FAA22863290DD30F00D188B1 /* TableView+extensions.swift */,
 			);
@@ -223,7 +219,6 @@
 		FA3A01372909DD8E0080F89D /* Currency */ = {
 			isa = PBXGroup;
 			children = (
-				FAA2285B290DA3B000D188B1 /* CoreDataModel */,
 				FA02EF67290B3EFF00F77F4B /* Helper */,
 				FA02EF64290B3E7200F77F4B /* APIService */,
 				FA02EF63290B3E4500F77F4B /* ViewModel */,
@@ -268,10 +263,36 @@
 		FAA2285E290DBC8800D188B1 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				FAA22869290DD5EE00D188B1 /* HistoryCell */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		FAA22867290DD5BB00D188B1 /* HistoryViewController */ = {
+			isa = PBXGroup;
+			children = (
+				FAA2284A290D93F700D188B1 /* HistoryViewController.swift */,
+				FAA2284B290D93F700D188B1 /* HistoryViewController.xib */,
+			);
+			path = HistoryViewController;
+			sourceTree = "<group>";
+		};
+		FAA22868290DD5D400D188B1 /* HomeViewController */ = {
+			isa = PBXGroup;
+			children = (
+				FA3A013C2909DD8E0080F89D /* ViewController.swift */,
+				FA3A013E2909DD8E0080F89D /* Main.storyboard */,
+			);
+			path = HomeViewController;
+			sourceTree = "<group>";
+		};
+		FAA22869290DD5EE00D188B1 /* HistoryCell */ = {
+			isa = PBXGroup;
+			children = (
 				FAA2285F290DBCA300D188B1 /* HistoryTableViewCell.swift */,
 				FAA22860290DBCA300D188B1 /* HistoryTableViewCell.xib */,
 			);
-			path = Cells;
+			path = HistoryCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -518,7 +539,6 @@
 				FAA22849290D903400D188B1 /* conversionsDataModel.xcdatamodeld in Sources */,
 				FAA22866290DD3C800D188B1 /* HistoryViewModel.swift in Sources */,
 				FA3A013D2909DD8E0080F89D /* ViewController.swift in Sources */,
-				FA02EF69290B3F1200F77F4B /* EndPoints.swift in Sources */,
 				FAA2285D290DA5A600D188B1 /* PersistentStorage.swift in Sources */,
 				FAA2284C290D93F700D188B1 /* HistoryViewController.swift in Sources */,
 				FAA2285A290DA3AB00D188B1 /* ConverterModel+CoreDataProperties.swift in Sources */,
