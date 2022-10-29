@@ -36,6 +36,7 @@ class ViewController: UIViewController {
         bindResultToLable()
         bindAmountTextFieldToViewModel()
         subscribeToCovertButton()
+        
 }
     func subscribeToCovertButton() {
         convertButton.rx.tap.throttle(RxTimeInterval.microseconds(500), scheduler: MainScheduler.instance).subscribe(onNext : {[weak self](_) in

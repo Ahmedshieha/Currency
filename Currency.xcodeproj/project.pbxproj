@@ -25,6 +25,7 @@
 		FA9A86D8290C32E80072BF48 /* Converter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9A86D7290C32E80072BF48 /* Converter.swift */; };
 		FA9A86DA290C341F0072BF48 /* ApiProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9A86D9290C341F0072BF48 /* ApiProvider.swift */; };
 		FA9A86DE290C4DD50072BF48 /* jsonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9A86DD290C4DD50072BF48 /* jsonData.swift */; };
+		FAA22849290D903400D188B1 /* conversionsDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FAA22847290D903400D188B1 /* conversionsDataModel.xcdatamodeld */; };
 		FF80F55E3CB0DEDE85DEAA6D /* Pods_Currency_CurrencyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EB983CE2EE413F859936D05 /* Pods_Currency_CurrencyUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -75,6 +76,7 @@
 		FA9A86D7290C32E80072BF48 /* Converter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Converter.swift; sourceTree = "<group>"; };
 		FA9A86D9290C341F0072BF48 /* ApiProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiProvider.swift; sourceTree = "<group>"; };
 		FA9A86DD290C4DD50072BF48 /* jsonData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = jsonData.swift; sourceTree = "<group>"; };
+		FAA22848290D903400D188B1 /* conversionsDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = conversionsDataModel.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				FA3A013C2909DD8E0080F89D /* ViewController.swift */,
+				FAA22847290D903400D188B1 /* conversionsDataModel.xcdatamodeld */,
 				FA3A013E2909DD8E0080F89D /* Main.storyboard */,
 			);
 			path = View;
@@ -467,6 +470,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAA22849290D903400D188B1 /* conversionsDataModel.xcdatamodeld in Sources */,
 				FA3A013D2909DD8E0080F89D /* ViewController.swift in Sources */,
 				FA02EF69290B3F1200F77F4B /* EndPoints.swift in Sources */,
 				FA9A86D8290C32E80072BF48 /* Converter.swift in Sources */,
@@ -826,6 +830,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		FAA22847290D903400D188B1 /* conversionsDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				FAA22848290D903400D188B1 /* conversionsDataModel.xcdatamodel */,
+			);
+			currentVersion = FAA22848290D903400D188B1 /* conversionsDataModel.xcdatamodel */;
+			path = conversionsDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = FA3A012D2909DD8E0080F89D /* Project object */;
 }
