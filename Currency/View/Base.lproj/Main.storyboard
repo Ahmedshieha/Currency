@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tVt-uf-9bX">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
@@ -17,38 +17,46 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VIr-ow-t8b">
-                                <rect key="frame" x="20" y="231" width="136" height="216"/>
+                                <rect key="frame" x="20" y="275" width="136" height="216"/>
                             </pickerView>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oay-VO-obB">
-                                <rect key="frame" x="239" y="231" width="135" height="216"/>
+                                <rect key="frame" x="239" y="275" width="135" height="216"/>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="From" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="byD-aY-y34">
-                                <rect key="frame" x="20" y="202" width="136" height="25.333333333333343"/>
+                                <rect key="frame" x="20" y="246.00000000000003" width="136" height="25.333333333333343"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="to" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4gF-a5-0vr">
-                                <rect key="frame" x="239" y="194" width="135" height="25.333333333333343"/>
+                                <rect key="frame" x="239" y="238" width="135" height="25.333333333333314"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="From" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9VR-g0-X9b">
-                                <rect key="frame" x="20" y="144" width="136" height="34"/>
+                                <rect key="frame" x="20" y="188" width="136" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="To" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sn8-o0-Uuw">
-                                <rect key="frame" x="239" y="144" width="135" height="34"/>
+                                <rect key="frame" x="239" y="188" width="135" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s5n-Um-Vlx">
-                                <rect key="frame" x="157" y="454" width="76" height="31"/>
+                                <rect key="frame" x="157" y="498" width="76" height="31"/>
                                 <color key="tintColor" systemColor="labelColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Convert"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3A3-pq-ySf">
+                                <rect key="frame" x="153" y="583" width="84" height="36"/>
+                                <color key="tintColor" systemColor="labelColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Details">
+                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="18"/>
+                                </buttonConfiguration>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -56,6 +64,7 @@
                         <constraints>
                             <constraint firstItem="byD-aY-y34" firstAttribute="top" secondItem="9VR-g0-X9b" secondAttribute="bottom" constant="24" id="0GW-4Q-5Uk"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Oay-VO-obB" secondAttribute="trailing" constant="16" id="9tP-3H-KpF"/>
+                            <constraint firstItem="3A3-pq-ySf" firstAttribute="top" secondItem="s5n-Um-Vlx" secondAttribute="bottom" constant="54" id="CdX-wq-RU7"/>
                             <constraint firstItem="Oay-VO-obB" firstAttribute="leading" secondItem="VIr-ow-t8b" secondAttribute="trailing" constant="83" id="GAj-a4-rEq"/>
                             <constraint firstItem="s5n-Um-Vlx" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Nl9-ys-Lk6"/>
                             <constraint firstItem="9VR-g0-X9b" firstAttribute="leading" secondItem="VIr-ow-t8b" secondAttribute="leading" id="Q1P-na-Gd7"/>
@@ -74,10 +83,13 @@
                             <constraint firstItem="9VR-g0-X9b" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="rff-De-75n"/>
                             <constraint firstItem="sn8-o0-Uuw" firstAttribute="leading" secondItem="Oay-VO-obB" secondAttribute="leading" id="t27-Tv-lqC"/>
                             <constraint firstItem="byD-aY-y34" firstAttribute="trailing" secondItem="VIr-ow-t8b" secondAttribute="trailing" id="xU4-Hn-Jb5"/>
+                            <constraint firstItem="3A3-pq-ySf" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="zE8-rY-kia"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="exM-Uz-7H4"/>
                     <connections>
                         <outlet property="convertButton" destination="s5n-Um-Vlx" id="N8U-ta-eFU"/>
+                        <outlet property="detailsButton" destination="3A3-pq-ySf" id="d1q-t5-N8h"/>
                         <outlet property="fromTextField" destination="9VR-g0-X9b" id="06D-Wc-9M4"/>
                         <outlet property="frompickerView" destination="VIr-ow-t8b" id="YEY-g6-sdx"/>
                         <outlet property="toPickerView" destination="Oay-VO-obB" id="uID-mC-qY5"/>
@@ -85,6 +97,24 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1050.7692307692307" y="107.34597156398104"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="2jL-41-C1F">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tVt-uf-9bX" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="vFs-PZ-CbI">
+                        <rect key="frame" x="0.0" y="44" width="390" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="7wb-Pz-WQJ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bUX-Fy-vaj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="121.53846153846153" y="107.34597156398104"/>
         </scene>

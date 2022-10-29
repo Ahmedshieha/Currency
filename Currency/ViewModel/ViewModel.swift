@@ -8,6 +8,7 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import CoreData
 class SymbolViewModel {
     
 
@@ -47,11 +48,23 @@ class SymbolViewModel {
             case.success(let converter) :
                 self.loadingBehavior.accept(false)
                 self.resultSubject.accept(String(converter.result))
+                self.saveToCoreData(date: converter.date, amount: Int32(converter.query.amount), from: converter.query.from, to: converter.query.to, result: converter.result)
             case.failure(let error):
                 print(error.localizedDescription)
             }
         }
     }
-
- 
+    
+    func saveToCoreData (date : String , amount : Int32 , from : String , to : String , result : Double) {
+        let transaction = ConverterModel(context: PersistentStorage.shared.context)
+        transaction.date = date
+        transaction.amount = amount
+        transaction.from = from
+        transaction.to = to
+        transaction.result = result
+        
+        PersistentStorage.shared.saveContext()
+    }
 }
+
+
