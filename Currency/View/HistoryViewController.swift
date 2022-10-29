@@ -18,16 +18,15 @@ class HistoryViewController: UIViewController {
     @IBOutlet weak var historyTableView: UITableView!
     
     let disposeBag = DisposeBag()
-    var arrayOfData : [ConverterModel] = []
+    let viewModel = HistoryViewModel()
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         subscribeBackButton()
-        historyTableView.register(UINib(nibName: "HistoryTableViewCell", bundle: nil), forCellReuseIdentifier: "HistoryTableViewCell")
-        historyTableView.delegate = self
-        historyTableView.dataSource = self
+        setUpTableView()
         retriveDataFromCoreData()
+        subscribeToResponse()
     }
  
     func subscribeBackButton() {
@@ -37,36 +36,22 @@ class HistoryViewController: UIViewController {
         } ).disposed(by:disposeBag )
     }
     
+    func setUpTableView() {
+        historyTableView.registerCell(cell: HistoryTableViewCell.self)
+    }
+    
+    func subscribeToResponse() {
+        viewModel.transactionSubject.bind(to: self.historyTableView.rx.items(cellIdentifier: "HistoryTableViewCell", cellType: HistoryTableViewCell.self)) {(row , transaction , cell) in
+            cell.configureCell(from: transaction.from ?? "", to: transaction.to ?? "", amount: Int(transaction.amount), result: transaction.result)
+        }.disposed(by: disposeBag)
+        
+    }
     
     func retriveDataFromCoreData () {
-        do {
-            guard let result = try PersistentStorage.shared.context.fetch(ConverterModel.fetchRequest()) as? [ConverterModel] else {return}
-            for result in result {
-                arrayOfData.append(result)
-                historyTableView.reloadData()
-            }
+        viewModel.retriveDataFromCoreData()
+    }
+}
 
-        } catch let error {
-            print(error.localizedDescription)
-        }
-    }
-}
-extension HistoryViewController : UITableViewDelegate,UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return arrayOfData.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "HistoryTableViewCell") as!
-        HistoryTableViewCell
-        
-        cell.configureCell(from: arrayOfData[indexPath.row].from ?? "", to: arrayOfData[indexPath.row].to ?? "", amount: Int(arrayOfData[indexPath.row].amount ), result: arrayOfData[indexPath.row].result )
-        return cell
-    }
-    
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return 50
-//    }
     
     
-}
+

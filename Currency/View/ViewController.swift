@@ -24,20 +24,20 @@ class ViewController: UIViewController {
     @IBOutlet weak var convertButton: UIButton!
     
     let disposeBag = DisposeBag()
-    let symbolsViewModel = SymbolViewModel()
+    let symbolsViewModel = HomeViewModel()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-                getSymbols()
-                bindToPickerViews()
-                select()
-                bindResultToLable()
-                bindAmountTextFieldToViewModel()
-                subscribeToCovertButton()
-        fetchTransaction()
+//                getSymbols()
+//                bindToPickerViews()
+//                select()
+//                bindResultToLable()
+//                bindAmountTextFieldToViewModel()
+//                subscribeToCovertButton()
+//        fetchTransaction()
         subscribeDetailsButton()
     }
     

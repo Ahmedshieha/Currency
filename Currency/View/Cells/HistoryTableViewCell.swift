@@ -32,6 +32,11 @@ class HistoryTableViewCell: UITableViewCell {
         self.amountLable.text = String(amount)
         self.resultLAble.text = String(result)
         
+        
+    }
+    
+    func test (convert : ConverterModel) {
+        self.fromLable.text = convert.from
     }
     
 }
