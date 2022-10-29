@@ -20,6 +20,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var toPickerView: UIPickerView!
 
     
+    @IBOutlet weak var convertButton: UIButton!
+    
     let disposeBag = DisposeBag()
     let symbolsViewModel = SymbolViewModel()
 
@@ -33,24 +35,15 @@ class ViewController: UIViewController {
         select()
         bindResultToLable()
         bindAmountTextFieldToViewModel()
-        convertWhenChangeAmount()
-        
-//        bindToPickerFromJson()
-        self.symbolsViewModel.toPickerViewBehavior.subscribe(onNext : {(value) in
-            
-            print(value)
-        }).disposed(by: disposeBag)
-        
-                                                              
+        subscribeToCovertButton()
 }
-    
-  
-  func convertWhenChangeAmount() {
-      fromTextField.rx.controlEvent([.editingDidEnd]).asObservable().subscribe({[unowned self] _ in
-            converter()
+    func subscribeToCovertButton() {
+        convertButton.rx.tap.throttle(RxTimeInterval.microseconds(500), scheduler: MainScheduler.instance).subscribe(onNext : {[weak self](_) in
+            guard let self = self else {return}
+            self.converter()
         }).disposed(by: disposeBag)
-
     }
+  
     
     //    get symbols from viewModel
     func getSymbols () {

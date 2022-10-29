@@ -20,13 +20,16 @@ class SymbolViewModel {
     var fromPickerViewBehavior = BehaviorRelay<String>(value: "")
     var toPickerViewBehavior = BehaviorRelay<String>(value: "")
      
-
+    var loadingBehavior = BehaviorRelay<Bool>(value : false)
     
     
         func fetchSymbolsFromApi () {
-        ApiService.shared.getSymbolsWithMoya { result  in
+            loadingBehavior.accept(true)
+        ApiService.shared.getSymbolsWithMoya {[weak self] result  in
+            guard let self = self else {return}
             switch result {
             case.success(let symbols) :
+                self.loadingBehavior.accept(false)
                 let keysArray = Array(symbols.keys)
                 self.symbolsSubject.accept(keysArray)
             case.failure(let error) :
@@ -37,10 +40,12 @@ class SymbolViewModel {
     }
     
     func convertCurrencyFromTo () {
-       
-        ApiService.shared.convertCurrency(amount: Int(fromTextFieldBehavior.value) ?? 0, from: fromPickerViewBehavior.value, to: toPickerViewBehavior.value) { result in
+        loadingBehavior.accept(true)
+        ApiService.shared.convertCurrency(amount: Int(fromTextFieldBehavior.value) ?? 0, from: fromPickerViewBehavior.value, to: toPickerViewBehavior.value) {[weak self] result in
+            guard let self = self else {return}
             switch result {
             case.success(let converter) :
+                self.loadingBehavior.accept(false)
                 self.resultSubject.accept(String(converter.result))
             case.failure(let error):
                 print(error.localizedDescription)
