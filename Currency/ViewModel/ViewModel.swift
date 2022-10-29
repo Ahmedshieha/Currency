@@ -19,7 +19,9 @@ class SymbolViewModel {
     
     var fromPickerViewBehavior = BehaviorRelay<String>(value: "")
     var toPickerViewBehavior = BehaviorRelay<String>(value: "")
+     
 
+    
     
         func fetchSymbolsFromApi () {
         ApiService.shared.getSymbolsWithMoya { result  in
@@ -35,7 +37,8 @@ class SymbolViewModel {
     }
     
     func convertCurrencyFromTo () {
-        ApiService.shared.convertCurrency(amount: Int(fromTextFieldBehavior.value) ?? 0, from: "USD", to: "EGP") { result in
+       
+        ApiService.shared.convertCurrency(amount: Int(fromTextFieldBehavior.value) ?? 0, from: fromPickerViewBehavior.value, to: toPickerViewBehavior.value) { result in
             switch result {
             case.success(let converter) :
                 self.resultSubject.accept(String(converter.result))

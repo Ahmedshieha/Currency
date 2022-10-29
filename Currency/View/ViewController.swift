@@ -9,19 +9,16 @@ import UIKit
 import RxSwift
 import RxCocoa
 import Foundation
-import DropDown
 import Alamofire
 
 class ViewController: UIViewController {
    
     
-  
     @IBOutlet weak var fromTextField: UITextField!
-    
     @IBOutlet weak var toTextField: UITextField!
     @IBOutlet weak var frompickerView: UIPickerView!
     @IBOutlet weak var toPickerView: UIPickerView!
-    
+
     
     let disposeBag = DisposeBag()
     let symbolsViewModel = SymbolViewModel()
@@ -31,20 +28,25 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-//        getSymbols()
-//        bindToPickerViews()
-//        select()
-        getSelected()
+        getSymbols()
+        bindToPickerViews()
+        select()
         bindResultToLable()
         bindAmountTextFieldToViewModel()
         convertWhenChangeAmount()
         
+//        bindToPickerFromJson()
+        self.symbolsViewModel.toPickerViewBehavior.subscribe(onNext : {(value) in
+            
+            print(value)
+        }).disposed(by: disposeBag)
         
-    }
+                                                              
+}
     
   
   func convertWhenChangeAmount() {
-        fromTextField.rx.controlEvent([.editingChanged]).asObservable().subscribe({[unowned self] _ in
+      fromTextField.rx.controlEvent([.editingDidEnd]).asObservable().subscribe({[unowned self] _ in
             converter()
         }).disposed(by: disposeBag)
 
@@ -77,6 +79,7 @@ class ViewController: UIViewController {
     
     func bindToPickerViews() {
         symbolsViewModel.symbolsSubject.bind(to:frompickerView.rx.itemTitles) {(row , element) in
+            
             return element
         }.disposed(by: disposeBag)
 
@@ -86,11 +89,32 @@ class ViewController: UIViewController {
         }.disposed(by: disposeBag)
         }
     
-    
-    func getSelected() {
-        toPickerView.rx.modelSelected(String.self).subscribe {(event) in
-            
+    func bindToPickerFromJson() {
+        currenciesarray.bind(to:frompickerView.rx.itemTitles) {(row , element) in
+            return element
         }.disposed(by: disposeBag)
+
         
+        currenciesarray.bind(to:toPickerView.rx.itemTitles) {(row , element) in
+            return element
+        }.disposed(by: disposeBag)
+    }
+    
+    func select() {
+
+        toPickerView.rx.itemSelected.map({row , component in
+            self.symbolsViewModel.symbolsSubject.value[row]
+        }).bind(to: self.symbolsViewModel.toPickerViewBehavior).disposed(by: disposeBag)
+        
+        frompickerView.rx.itemSelected.map({row , component in
+            self.symbolsViewModel.symbolsSubject.value[row]
+        }).bind(to: self.symbolsViewModel.fromPickerViewBehavior).disposed(by: disposeBag)
+
+   
        }
 }
+
+
+
+
+
