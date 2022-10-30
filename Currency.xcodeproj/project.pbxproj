@@ -23,7 +23,6 @@
 		FA3A015C2909DD900080F89D /* CurrencyUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3A015B2909DD900080F89D /* CurrencyUITestsLaunchTests.swift */; };
 		FA9A86D8290C32E80072BF48 /* Converter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9A86D7290C32E80072BF48 /* Converter.swift */; };
 		FA9A86DA290C341F0072BF48 /* ApiProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9A86D9290C341F0072BF48 /* ApiProvider.swift */; };
-		FA9A86DE290C4DD50072BF48 /* jsonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9A86DD290C4DD50072BF48 /* jsonData.swift */; };
 		FAA22849290D903400D188B1 /* conversionsDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FAA22847290D903400D188B1 /* conversionsDataModel.xcdatamodeld */; };
 		FAA2284C290D93F700D188B1 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA2284A290D93F700D188B1 /* HistoryViewController.swift */; };
 		FAA2284D290D93F700D188B1 /* HistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAA2284B290D93F700D188B1 /* HistoryViewController.xib */; };
@@ -88,7 +87,6 @@
 		FA3A015B2909DD900080F89D /* CurrencyUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		FA9A86D7290C32E80072BF48 /* Converter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Converter.swift; sourceTree = "<group>"; };
 		FA9A86D9290C341F0072BF48 /* ApiProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiProvider.swift; sourceTree = "<group>"; };
-		FA9A86DD290C4DD50072BF48 /* jsonData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = jsonData.swift; sourceTree = "<group>"; };
 		FAA22848290D903400D188B1 /* conversionsDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = conversionsDataModel.xcdatamodel; sourceTree = "<group>"; };
 		FAA2284A290D93F700D188B1 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		FAA2284B290D93F700D188B1 /* HistoryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryViewController.xib; sourceTree = "<group>"; };
@@ -202,7 +200,6 @@
 		FA02EF67290B3EFF00F77F4B /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				FA9A86DD290C4DD50072BF48 /* jsonData.swift */,
 				FAA22863290DD30F00D188B1 /* TableView+extensions.swift */,
 			);
 			path = Helper;
@@ -592,7 +589,6 @@
 				FA9A86DA290C341F0072BF48 /* ApiProvider.swift in Sources */,
 				FA3A013B2909DD8E0080F89D /* SceneDelegate.swift in Sources */,
 				FA02EF6D290B484E00F77F4B /* HomeViewModel.swift in Sources */,
-				FA9A86DE290C4DD50072BF48 /* jsonData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
