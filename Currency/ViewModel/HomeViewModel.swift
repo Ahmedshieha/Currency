@@ -34,9 +34,9 @@ class HomeViewModel {
             guard let self = self else {return}
             switch result {
             case.success(let symbols) :
-                self.loadingBehavior.accept(false)
                 let keysArray = Array(symbols.keys)
                 self.symbolsSubject.accept(keysArray)
+                self.loadingBehavior.accept(false)
             case.failure(let error) :
                 print(error.localizedDescription)
             }

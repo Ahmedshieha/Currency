@@ -44,12 +44,13 @@ class ViewController: UIViewController {
         subscribeOtherCurrenciesButton ()
         fetchTransaction()
         subscribeDetailsButton()
-        setUpButtons()
+        setUp()
         bintToLoadingIndicator ()
-        jGProgress.textLabel.text = "Loading"
+        
+        
     }
     
-    func setUpButtons () {
+    func setUp () {
         self.convertButton.layer.cornerRadius = 10
         self.convertButton.backgroundColor = .lightGray
         
@@ -58,6 +59,7 @@ class ViewController: UIViewController {
         
         self.otherCurrenciesButton.layer.cornerRadius = 10
         self.otherCurrenciesButton.backgroundColor = .lightGray
+        self.jGProgress.textLabel.text = "Loading"
         
     }
     
