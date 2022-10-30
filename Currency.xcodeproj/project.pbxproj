@@ -39,6 +39,7 @@
 		FAB9E35E290E7104007FF9C8 /* OtherCurrenciesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB9E35D290E7104007FF9C8 /* OtherCurrenciesViewModel.swift */; };
 		FAB9E364290E83C1007FF9C8 /* OtherCurrenciesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB9E362290E83C1007FF9C8 /* OtherCurrenciesTableViewCell.swift */; };
 		FAB9E365290E83C1007FF9C8 /* OtherCurrenciesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAB9E363290E83C1007FF9C8 /* OtherCurrenciesTableViewCell.xib */; };
+		FAB9E36E290F38D7007FF9C8 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB9E36D290F38D7007FF9C8 /* Date+Extensions.swift */; };
 		FF80F55E3CB0DEDE85DEAA6D /* Pods_Currency_CurrencyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EB983CE2EE413F859936D05 /* Pods_Currency_CurrencyUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -103,6 +104,7 @@
 		FAB9E35D290E7104007FF9C8 /* OtherCurrenciesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherCurrenciesViewModel.swift; sourceTree = "<group>"; };
 		FAB9E362290E83C1007FF9C8 /* OtherCurrenciesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherCurrenciesTableViewCell.swift; sourceTree = "<group>"; };
 		FAB9E363290E83C1007FF9C8 /* OtherCurrenciesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OtherCurrenciesTableViewCell.xib; sourceTree = "<group>"; };
+		FAB9E36D290F38D7007FF9C8 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,6 +203,7 @@
 			isa = PBXGroup;
 			children = (
 				FAA22863290DD30F00D188B1 /* TableView+extensions.swift */,
+				FAB9E36D290F38D7007FF9C8 /* Date+Extensions.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -570,6 +573,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAA22849290D903400D188B1 /* conversionsDataModel.xcdatamodeld in Sources */,
+				FAB9E36E290F38D7007FF9C8 /* Date+Extensions.swift in Sources */,
 				FAA22866290DD3C800D188B1 /* HistoryViewModel.swift in Sources */,
 				FAB9E35E290E7104007FF9C8 /* OtherCurrenciesViewModel.swift in Sources */,
 				FA3A013D2909DD8E0080F89D /* ViewController.swift in Sources */,

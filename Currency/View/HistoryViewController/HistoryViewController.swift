@@ -10,10 +10,13 @@ import CoreData
 import Foundation
 import RxSwift
 import RxCocoa
+
 import RxDataSources
 
 
-class HistoryViewController: UIViewController  {
+class HistoryViewController: UIViewController {
+    
+    
     
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var historyTableView: UITableView!
@@ -31,7 +34,7 @@ class HistoryViewController: UIViewController  {
         retriveDataFromCoreData()
         subscribeToResponse()
     }
-  
+    
     // method to dismiss historyViewController
     func subscribeBackButton() {
         backButton.rx.tap.subscribe(onNext : { _ in
@@ -40,20 +43,24 @@ class HistoryViewController: UIViewController  {
         } ).disposed(by:disposeBag )
     }
     
-     // setUp tableView
+    // setUp tableView
     func setUpTableView() {
         historyTableView.registerCell(cell: HistoryTableViewCell.self)
     }
     
     // bind data to tableView from viewModel
     func subscribeToResponse() {
-        viewModel.transactionSubject.bind(to: self.historyTableView.rx.items(cellIdentifier: "HistoryTableViewCell", cellType: HistoryTableViewCell.self)) {row , transaction , cell in
-            
-            cell.configureCell(from: transaction.from ?? "", to: transaction.to ?? "", amount: Int(transaction.amount), result: transaction.result)
-     
-        }.disposed(by: disposeBag)
         
-
+        let dataSource = RxTableViewSectionedReloadDataSource<SectionOfCustomData>(configureCell: { dataSource, tableView, indexPath, transaction in
+            let cell = tableView.dequeueReusableCell(withIdentifier: "HistoryTableViewCell", for: indexPath) as! HistoryTableViewCell
+            cell.configureCell(from: transaction.from ?? "", to: transaction.to ?? "", amount: Int(transaction.amount), result: transaction.result)
+            return cell
+        })
+        dataSource.titleForHeaderInSection = { dataSource , indexPath in
+            return dataSource.sectionModels[indexPath].header
+        }
+        
+        viewModel.currenciesObservabale().bind(to: historyTableView.rx.items(dataSource: dataSource)).disposed(by: disposeBag)
         
     }
     
@@ -62,7 +69,22 @@ class HistoryViewController: UIViewController  {
         viewModel.retriveDataFromCoreData()
     }
     
-
     
 }
 
+
+
+
+
+struct SectionOfCustomData {
+    var header: String
+    var items: [Item]
+}
+extension SectionOfCustomData: SectionModelType {
+    typealias Item = ConverterModel
+    
+    init(original: SectionOfCustomData, items: [Item]) {
+        self = original
+        self.items = items
+    }
+}
