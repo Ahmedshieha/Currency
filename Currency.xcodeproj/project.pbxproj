@@ -34,6 +34,9 @@
 		FAA22862290DBCA300D188B1 /* HistoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAA22860290DBCA300D188B1 /* HistoryTableViewCell.xib */; };
 		FAA22864290DD30F00D188B1 /* TableView+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA22863290DD30F00D188B1 /* TableView+extensions.swift */; };
 		FAA22866290DD3C800D188B1 /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA22865290DD3C800D188B1 /* HistoryViewModel.swift */; };
+		FAB9E357290E6C0C007FF9C8 /* OtherCurrencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB9E356290E6C0C007FF9C8 /* OtherCurrencies.swift */; };
+		FAB9E35B290E6D13007FF9C8 /* OtherCurrenciesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB9E359290E6D13007FF9C8 /* OtherCurrenciesViewController.swift */; };
+		FAB9E35C290E6D13007FF9C8 /* OtherCurrenciesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAB9E35A290E6D13007FF9C8 /* OtherCurrenciesViewController.xib */; };
 		FF80F55E3CB0DEDE85DEAA6D /* Pods_Currency_CurrencyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EB983CE2EE413F859936D05 /* Pods_Currency_CurrencyUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -93,6 +96,9 @@
 		FAA22860290DBCA300D188B1 /* HistoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryTableViewCell.xib; sourceTree = "<group>"; };
 		FAA22863290DD30F00D188B1 /* TableView+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TableView+extensions.swift"; sourceTree = "<group>"; };
 		FAA22865290DD3C800D188B1 /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
+		FAB9E356290E6C0C007FF9C8 /* OtherCurrencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherCurrencies.swift; sourceTree = "<group>"; };
+		FAB9E359290E6D13007FF9C8 /* OtherCurrenciesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherCurrenciesViewController.swift; sourceTree = "<group>"; };
+		FAB9E35A290E6D13007FF9C8 /* OtherCurrenciesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OtherCurrenciesViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +157,7 @@
 			children = (
 				FA02EF6A290B419E00F77F4B /* Symbols.swift */,
 				FA9A86D7290C32E80072BF48 /* Converter.swift */,
+				FAB9E356290E6C0C007FF9C8 /* OtherCurrencies.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -158,6 +165,7 @@
 		FA02EF62290B3E4000F77F4B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FAB9E358290E6CF1007FF9C8 /* OtherCurrenciesViewController */,
 				FAA22868290DD5D400D188B1 /* HomeViewController */,
 				FAA22847290D903400D188B1 /* conversionsDataModel.xcdatamodeld */,
 				FAA22867290DD5BB00D188B1 /* HistoryViewController */,
@@ -295,6 +303,15 @@
 			path = HistoryCell;
 			sourceTree = "<group>";
 		};
+		FAB9E358290E6CF1007FF9C8 /* OtherCurrenciesViewController */ = {
+			isa = PBXGroup;
+			children = (
+				FAB9E359290E6D13007FF9C8 /* OtherCurrenciesViewController.swift */,
+				FAB9E35A290E6D13007FF9C8 /* OtherCurrenciesViewController.xib */,
+			);
+			path = OtherCurrenciesViewController;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -404,6 +421,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAB9E35C290E6D13007FF9C8 /* OtherCurrenciesViewController.xib in Resources */,
 				FA3A01452909DD8F0080F89D /* LaunchScreen.storyboard in Resources */,
 				FAA22862290DBCA300D188B1 /* HistoryTableViewCell.xib in Resources */,
 				FA3A01422909DD8F0080F89D /* Assets.xcassets in Resources */,
@@ -545,9 +563,11 @@
 				FA9A86D8290C32E80072BF48 /* Converter.swift in Sources */,
 				FAA22859290DA3AB00D188B1 /* ConverterModel+CoreDataClass.swift in Sources */,
 				FA3A01392909DD8E0080F89D /* AppDelegate.swift in Sources */,
+				FAB9E357290E6C0C007FF9C8 /* OtherCurrencies.swift in Sources */,
 				FAA22864290DD30F00D188B1 /* TableView+extensions.swift in Sources */,
 				FA02EF6B290B419E00F77F4B /* Symbols.swift in Sources */,
 				FAA22861290DBCA300D188B1 /* HistoryTableViewCell.swift in Sources */,
+				FAB9E35B290E6D13007FF9C8 /* OtherCurrenciesViewController.swift in Sources */,
 				FA02EF66290B3EBA00F77F4B /* ApiService.swift in Sources */,
 				FA9A86DA290C341F0072BF48 /* ApiProvider.swift in Sources */,
 				FA3A013B2909DD8E0080F89D /* SceneDelegate.swift in Sources */,

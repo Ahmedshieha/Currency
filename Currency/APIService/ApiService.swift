@@ -59,6 +59,26 @@ class ApiService {
         }
     }
     
+    func otherCurrencies(base : String , symbols : [String] , completion : @escaping (Result<OtherCurrencies,Error>) -> Void) {
+        provider.request(.otherCurrencies(base, symbols)) { result in
+            switch result {
+            case.success(let response):
+                do {
+                    
+                    let jsonData = try JSONDecoder().decode(OtherCurrencies.self, from: response.data)
+                    completion(.success(jsonData))
+                    print(jsonData.rates)
+                   
+                }
+                catch let error {
+                    print("\(error.localizedDescription) error in Decoder")
+                }
+            case.failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
     
     
 }

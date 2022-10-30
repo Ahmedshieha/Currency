@@ -13,6 +13,8 @@ import Moya
 enum DataService {
     case getSymbols
     case converter(Int,String,String)
+    case otherCurrencies(String,[String])
+    
 }
 extension DataService :TargetType , AccessTokenAuthorizable {
     
@@ -26,6 +28,8 @@ extension DataService :TargetType , AccessTokenAuthorizable {
             return "symbols"
         case.converter :
             return "convert"
+        case.otherCurrencies:
+            return "latest"
         }
     }
     
@@ -34,6 +38,8 @@ extension DataService :TargetType , AccessTokenAuthorizable {
         case.getSymbols :
             return.get
         case.converter :
+            return.get
+        case.otherCurrencies:
             return.get
         }
     }
@@ -45,6 +51,8 @@ extension DataService :TargetType , AccessTokenAuthorizable {
         case.converter(let amount , let from , let to ):
             
             return.requestParameters(parameters: ["to":(to),"from":(from),"amount":(amount)], encoding: URLEncoding.queryString)
+        case.otherCurrencies(let base , let symbols):
+            return.requestParameters(parameters: ["base":(base) , "symbols":(symbols)], encoding: URLEncoding.queryString)
         }
     }
     
