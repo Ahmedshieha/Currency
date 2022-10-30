@@ -17,10 +17,10 @@ class OtherCurrenciesViewModel {
     
     
     func getOtherCurrencies() {
-        ApiService.shared.otherCurrencies(base: UserDefaults.standard.value(forKey: "base") as! String, symbols: commaSeparatedList(list: ["ETB", "SAR", "CUP", "MXN", "DJF", "BRL", "ILS", "LYD", "CHF"]) ) { result in
+        let popularCurrencies = ["USD", "EUR", "JPY", "GBP", "AUD", "CAD", "CHF", "CNH", "HKD","NZD"]
+        ApiService.shared.otherCurrencies(base: UserDefaults.standard.value(forKey: "base") as! String, symbols: commaSeparatedList(list: popularCurrencies) ) { result in
             switch result {
             case.success(let otherCurrencies) :
-//                self.transactionSubject.add(element: otherCurrencies)
                 self.transactionSubject.accept(otherCurrencies.rates)
             case.failure(let error ):
                 print(error.localizedDescription)

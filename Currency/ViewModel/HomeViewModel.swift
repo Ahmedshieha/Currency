@@ -9,6 +9,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 import CoreData
+
 class HomeViewModel {
     
 
@@ -25,6 +26,8 @@ class HomeViewModel {
     var loadingBehavior = BehaviorRelay<Bool>(value : false)
     
      let historyViewModel = HistoryViewModel()
+    
+    
         func fetchSymbolsFromApi () {
             loadingBehavior.accept(true)
         ApiService.shared.getSymbolsWithMoya {[weak self] result  in

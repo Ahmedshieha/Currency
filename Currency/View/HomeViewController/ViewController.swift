@@ -10,6 +10,7 @@ import RxSwift
 import RxCocoa
 import Foundation
 import Alamofire
+import JGProgressHUD
 
 class ViewController: UIViewController {
     
@@ -26,7 +27,10 @@ class ViewController: UIViewController {
     
     let disposeBag = DisposeBag()
     let homeViewModel = HomeViewModel()
- 
+    let jGProgress = JGProgressHUD()
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -38,9 +42,37 @@ class ViewController: UIViewController {
         bindAmountTextFieldToViewModel()
         subscribeToCovertButton()
         subscribeOtherCurrenciesButton ()
-//        fetchTransaction()
+        fetchTransaction()
         subscribeDetailsButton()
+        setUpButtons()
+        bintToLoadingIndicator ()
+        jGProgress.textLabel.text = "Loading"
     }
+    
+    func setUpButtons () {
+        self.convertButton.layer.cornerRadius = 10
+        self.convertButton.backgroundColor = .lightGray
+        
+        self.detailsButton.layer.cornerRadius = 10
+        self.detailsButton.backgroundColor = .lightGray
+        
+        self.otherCurrenciesButton.layer.cornerRadius = 10
+        self.otherCurrenciesButton.backgroundColor = .lightGray
+        
+    }
+    
+    
+    func bintToLoadingIndicator () {
+        self.homeViewModel.loadingBehavior.subscribe(onNext : {(isLoading) in
+            
+            if isLoading {
+                self.jGProgress.show(in: self.view, animated: true)
+            } else {
+                self.jGProgress.dismiss(animated: true)
+            }
+        }).disposed(by: disposeBag)
+    }
+    
     
     
     
@@ -48,8 +80,6 @@ class ViewController: UIViewController {
         do {
             guard let result = try PersistentStorage.shared.context.fetch(ConverterModel.fetchRequest()) as? [ConverterModel] else {return}
             result.forEach({print($0.result)})
-            print(result)
-            
         } catch let error {
             print(error.localizedDescription)
         }
