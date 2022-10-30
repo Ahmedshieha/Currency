@@ -18,7 +18,7 @@ class ApiService {
     
     // moya provider to take AccessToken if availaple and print logger to test your data and request
     
-    let provider = MoyaProvider<DataService>(
+    let provider = MoyaProvider<ApiProvider>(
         plugins : [
             AccessTokenPlugin { _ in
                 return ""

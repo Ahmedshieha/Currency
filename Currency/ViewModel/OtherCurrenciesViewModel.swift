@@ -20,7 +20,7 @@ class OtherCurrenciesViewModel {
             switch result {
             case.success(let otherCurrencies) :
                 self.transactionSubject.accept(otherCurrencies.rates)
-            case.failure(let error ):
+            case.failure(let error):
                 print(error.localizedDescription)
             }
         }

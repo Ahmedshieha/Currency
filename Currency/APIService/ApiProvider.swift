@@ -11,7 +11,7 @@ import Moya
 
  // enum for endPoints that i use
 
-enum DataService {
+enum ApiProvider {
     case getSymbols
     case converter(Int,String,String)
     case otherCurrencies(String,String)
@@ -19,7 +19,7 @@ enum DataService {
 }
 
 // extension for enum of targrtType which make it easy to handle url , methods , task and path of url 
-extension DataService :TargetType , AccessTokenAuthorizable {
+extension ApiProvider :TargetType , AccessTokenAuthorizable {
     
     var baseURL: URL {
         URL(string: "https://api.apilayer.com/fixer")!
