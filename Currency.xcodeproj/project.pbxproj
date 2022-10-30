@@ -151,7 +151,6 @@
 			children = (
 				FA02EF6A290B419E00F77F4B /* Symbols.swift */,
 				FA9A86D7290C32E80072BF48 /* Converter.swift */,
-				FAA2285B290DA3B000D188B1 /* CoreDataModel */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -219,6 +218,7 @@
 		FA3A01372909DD8E0080F89D /* Currency */ = {
 			isa = PBXGroup;
 			children = (
+				FAA2285B290DA3B000D188B1 /* CoreDataModel */,
 				FA02EF67290B3EFF00F77F4B /* Helper */,
 				FA02EF64290B3E7200F77F4B /* APIService */,
 				FA02EF63290B3E4500F77F4B /* ViewModel */,
