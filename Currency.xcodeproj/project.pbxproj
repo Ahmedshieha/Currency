@@ -38,7 +38,6 @@
 		FAB9E35B290E6D13007FF9C8 /* OtherCurrenciesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB9E359290E6D13007FF9C8 /* OtherCurrenciesViewController.swift */; };
 		FAB9E35C290E6D13007FF9C8 /* OtherCurrenciesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAB9E35A290E6D13007FF9C8 /* OtherCurrenciesViewController.xib */; };
 		FAB9E35E290E7104007FF9C8 /* OtherCurrenciesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB9E35D290E7104007FF9C8 /* OtherCurrenciesViewModel.swift */; };
-		FAB9E360290E787E007FF9C8 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB9E35F290E787E007FF9C8 /* UIViewController+Extension.swift */; };
 		FAB9E364290E83C1007FF9C8 /* OtherCurrenciesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB9E362290E83C1007FF9C8 /* OtherCurrenciesTableViewCell.swift */; };
 		FAB9E365290E83C1007FF9C8 /* OtherCurrenciesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAB9E363290E83C1007FF9C8 /* OtherCurrenciesTableViewCell.xib */; };
 		FF80F55E3CB0DEDE85DEAA6D /* Pods_Currency_CurrencyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EB983CE2EE413F859936D05 /* Pods_Currency_CurrencyUITests.framework */; };
@@ -104,7 +103,6 @@
 		FAB9E359290E6D13007FF9C8 /* OtherCurrenciesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherCurrenciesViewController.swift; sourceTree = "<group>"; };
 		FAB9E35A290E6D13007FF9C8 /* OtherCurrenciesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OtherCurrenciesViewController.xib; sourceTree = "<group>"; };
 		FAB9E35D290E7104007FF9C8 /* OtherCurrenciesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherCurrenciesViewModel.swift; sourceTree = "<group>"; };
-		FAB9E35F290E787E007FF9C8 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		FAB9E362290E83C1007FF9C8 /* OtherCurrenciesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherCurrenciesTableViewCell.swift; sourceTree = "<group>"; };
 		FAB9E363290E83C1007FF9C8 /* OtherCurrenciesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OtherCurrenciesTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -206,7 +204,6 @@
 			children = (
 				FA9A86DD290C4DD50072BF48 /* jsonData.swift */,
 				FAA22863290DD30F00D188B1 /* TableView+extensions.swift */,
-				FAB9E35F290E787E007FF9C8 /* UIViewController+Extension.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -576,7 +573,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAA22849290D903400D188B1 /* conversionsDataModel.xcdatamodeld in Sources */,
-				FAB9E360290E787E007FF9C8 /* UIViewController+Extension.swift in Sources */,
 				FAA22866290DD3C800D188B1 /* HistoryViewModel.swift in Sources */,
 				FAB9E35E290E7104007FF9C8 /* OtherCurrenciesViewModel.swift in Sources */,
 				FA3A013D2909DD8E0080F89D /* ViewController.swift in Sources */,

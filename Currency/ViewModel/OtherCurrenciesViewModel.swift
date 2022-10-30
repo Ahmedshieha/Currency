@@ -12,10 +12,8 @@ import RxSwift
 class OtherCurrenciesViewModel {
     
     var transactionSubject = BehaviorRelay<[String:Double]>(value: ["":0.0])
-    var otherCurrencies = PublishSubject<[String]>()
-    var fromPickerViewBehavior = BehaviorRelay<String>(value: "")
     
-    
+    // method to take symbols as strings and base symbol and fetch otherCurrencies rates from ApiService
     func getOtherCurrencies() {
         let popularCurrencies = ["USD", "EUR", "JPY", "GBP", "AUD", "CAD", "CHF", "CNH", "HKD","NZD"]
         ApiService.shared.otherCurrencies(base: UserDefaults.standard.value(forKey: "base") as! String, symbols: commaSeparatedList(list: popularCurrencies) ) { result in
@@ -27,7 +25,8 @@ class OtherCurrenciesViewModel {
             }
         }
     }
-    
+    // method to  separate array of strings to strings with comma
+    // like from ["USD","EUR","JPY"] to USD,EUR,JPY
     
     func commaSeparatedList(list: [String]) -> String {
         var outputString: String = ""
@@ -39,13 +38,4 @@ class OtherCurrenciesViewModel {
     }
     
 
-}
-
-extension BehaviorRelay where Element: RangeReplaceableCollection {
-
-    func add(element: Element.Element) {
-        var array = self.value
-        array.append(element)
-        self.accept(array)
-    }
 }

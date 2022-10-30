@@ -9,6 +9,7 @@ import Foundation
 import Moya
 
 
+ // enum for endPoints that i use
 
 enum DataService {
     case getSymbols
@@ -16,6 +17,8 @@ enum DataService {
     case otherCurrencies(String,String)
     
 }
+
+// extension for enum of targrtType which make it easy to handle url , methods , task and path of url 
 extension DataService :TargetType , AccessTokenAuthorizable {
     
     var baseURL: URL {

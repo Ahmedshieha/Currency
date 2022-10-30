@@ -10,6 +10,7 @@ import RxSwift
 import RxCocoa
 import CoreData
 
+
 class HomeViewModel {
     
 
@@ -28,6 +29,8 @@ class HomeViewModel {
      let historyViewModel = HistoryViewModel()
     
     
+    // method to fetch  available currencies from ApiService and retrieve array of symbols as [string]
+    
         func fetchSymbolsFromApi () {
             loadingBehavior.accept(true)
         ApiService.shared.getSymbolsWithMoya {[weak self] result  in
@@ -43,6 +46,7 @@ class HomeViewModel {
             
         }
     }
+    // method to get result of convert currencies from ApiService
     
     func convertCurrencyFromTo () {
         loadingBehavior.accept(true)
@@ -52,8 +56,10 @@ class HomeViewModel {
             case.success(let converter) :
                 self.loadingBehavior.accept(false)
                 self.resultSubject.accept(String(converter.result))
+                // save user action to pass it in othercurrencies page
                 UserDefaults.standard.set(converter.query.from, forKey: "base")
                 UserDefaults.standard.set(converter.query.amount, forKey: "amount")
+                // save data in coreData after convert success
                 self.historyViewModel.saveToCoreData(date: converter.date, amount: Int32(converter.query.amount), from: converter.query.from, to: converter.query.to, result: converter.result)
             case.failure(let error):
                 print(error.localizedDescription)

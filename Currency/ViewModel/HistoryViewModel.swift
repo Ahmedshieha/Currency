@@ -12,6 +12,7 @@ class HistoryViewModel {
     var transactionSubject = BehaviorRelay<[ConverterModel]>(value: [])
     
     
+      // method to save data in coreData with some parameters
     
     func saveToCoreData (date : String , amount : Int32 , from : String , to : String , result : Double) {
         
@@ -26,7 +27,7 @@ class HistoryViewModel {
     
     
     
-    
+    // method to retrive Data from CoreData and pass it to transactionSubject 
     func retriveDataFromCoreData () {
         do {
             guard let result = try PersistentStorage.shared.context.fetch(ConverterModel.fetchRequest()) as? [ConverterModel] else {return}

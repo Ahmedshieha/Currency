@@ -9,9 +9,15 @@ import Foundation
 import RxSwift
 import RxCocoa
 import Moya
+
+
+ // class for handle api methods
 class ApiService {
     
     static let shared = ApiService()
+    
+    // moya provider to take AccessToken if availaple and print logger to test your data and request
+    
     let provider = MoyaProvider<DataService>(
         plugins : [
             AccessTokenPlugin { _ in
@@ -21,6 +27,9 @@ class ApiService {
             NetworkLoggerPlugin(configuration: NetworkLoggerPlugin.Configuration(logOptions : .verbose) )
         ]
     )
+    
+    
+    // method to get available currencies
 
     func getSymbolsWithMoya(completion : @escaping (Result <[String:String] , Error>)-> Void) {
         provider.request(.getSymbols) { result in
@@ -39,6 +48,7 @@ class ApiService {
             }
         }
     }
+      // method to convert from currency to another with parameters amount & from and to
     
     func convertCurrency(amount : Int , from : String , to : String ,compoletion : @escaping (Result<Converter,Error> ) -> Void) {
         provider.request(.converter(amount, from , to)) { result in
@@ -58,6 +68,8 @@ class ApiService {
             }
         }
     }
+    
+    // method to get top 10 popular currencies from base currency that you convert
     
     func otherCurrencies(base : String , symbols : String , completion : @escaping (Result<OtherCurrencies,Error>) -> Void) {
         provider.request(.otherCurrencies(base, symbols)) { result in
