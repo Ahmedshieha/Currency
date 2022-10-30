@@ -24,7 +24,6 @@ class HomeViewModel {
      
     var loadingBehavior = BehaviorRelay<Bool>(value : false)
     
-    
      let historyViewModel = HistoryViewModel()
         func fetchSymbolsFromApi () {
             loadingBehavior.accept(true)
@@ -50,6 +49,8 @@ class HomeViewModel {
             case.success(let converter) :
                 self.loadingBehavior.accept(false)
                 self.resultSubject.accept(String(converter.result))
+                UserDefaults.standard.set(converter.query.from, forKey: "base")
+                UserDefaults.standard.set(converter.query.amount, forKey: "amount")
                 self.historyViewModel.saveToCoreData(date: converter.date, amount: Int32(converter.query.amount), from: converter.query.from, to: converter.query.to, result: converter.result)
             case.failure(let error):
                 print(error.localizedDescription)

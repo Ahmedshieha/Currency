@@ -13,7 +13,7 @@ import Moya
 enum DataService {
     case getSymbols
     case converter(Int,String,String)
-    case otherCurrencies(String,[String])
+    case otherCurrencies(String,String)
     
 }
 extension DataService :TargetType , AccessTokenAuthorizable {
@@ -57,7 +57,7 @@ extension DataService :TargetType , AccessTokenAuthorizable {
     }
     
     var headers: [String : String]? {
-        ["apikey":"C58KNZw5WCJjBlBcEDVHxWY6F7WmOqJ1"]
+        ["apikey":"jjf55lOeZ7c7zRIuP3jM55WWC3YNd2Y1"]
     }
     
     var authorizationType: AuthorizationType? {

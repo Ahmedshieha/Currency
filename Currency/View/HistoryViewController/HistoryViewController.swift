@@ -21,6 +21,7 @@ class HistoryViewController: UIViewController {
     
     let disposeBag = DisposeBag()
     let viewModel = HistoryViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -30,6 +31,7 @@ class HistoryViewController: UIViewController {
         retriveDataFromCoreData()
         subscribeToResponse()
     }
+ 
     
     
  

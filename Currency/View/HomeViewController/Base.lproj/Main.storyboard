@@ -51,11 +51,19 @@
                                 <buttonConfiguration key="configuration" style="plain" title="Convert"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3A3-pq-ySf">
-                                <rect key="frame" x="153" y="583" width="84" height="36"/>
+                                <rect key="frame" x="151.33333333333334" y="583" width="87.333333333333343" height="36"/>
                                 <color key="tintColor" systemColor="labelColor"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Details">
+                                <buttonConfiguration key="configuration" style="plain" title="History">
                                     <fontDescription key="titleFontDescription" type="boldSystem" pointSize="18"/>
+                                </buttonConfiguration>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W8c-Vu-Vha">
+                                <rect key="frame" x="114.66666666666669" y="637" width="161" height="34.333333333333371"/>
+                                <color key="tintColor" systemColor="labelColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="other Currencies">
+                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="17"/>
                                 </buttonConfiguration>
                             </button>
                         </subviews>
@@ -65,6 +73,8 @@
                             <constraint firstItem="byD-aY-y34" firstAttribute="top" secondItem="9VR-g0-X9b" secondAttribute="bottom" constant="24" id="0GW-4Q-5Uk"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Oay-VO-obB" secondAttribute="trailing" constant="16" id="9tP-3H-KpF"/>
                             <constraint firstItem="3A3-pq-ySf" firstAttribute="top" secondItem="s5n-Um-Vlx" secondAttribute="bottom" constant="54" id="CdX-wq-RU7"/>
+                            <constraint firstItem="W8c-Vu-Vha" firstAttribute="top" secondItem="3A3-pq-ySf" secondAttribute="bottom" constant="18" id="ELO-gM-S2o"/>
+                            <constraint firstItem="W8c-Vu-Vha" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="EZ0-LZ-3hW"/>
                             <constraint firstItem="Oay-VO-obB" firstAttribute="leading" secondItem="VIr-ow-t8b" secondAttribute="trailing" constant="83" id="GAj-a4-rEq"/>
                             <constraint firstItem="s5n-Um-Vlx" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Nl9-ys-Lk6"/>
                             <constraint firstItem="9VR-g0-X9b" firstAttribute="leading" secondItem="VIr-ow-t8b" secondAttribute="leading" id="Q1P-na-Gd7"/>
@@ -92,6 +102,7 @@
                         <outlet property="detailsButton" destination="3A3-pq-ySf" id="d1q-t5-N8h"/>
                         <outlet property="fromTextField" destination="9VR-g0-X9b" id="06D-Wc-9M4"/>
                         <outlet property="frompickerView" destination="VIr-ow-t8b" id="YEY-g6-sdx"/>
+                        <outlet property="otherCurrenciesButton" destination="W8c-Vu-Vha" id="ALU-Y1-Xxa"/>
                         <outlet property="toPickerView" destination="Oay-VO-obB" id="uID-mC-qY5"/>
                         <outlet property="toTextField" destination="sn8-o0-Uuw" id="nlK-tK-Bj2"/>
                     </connections>

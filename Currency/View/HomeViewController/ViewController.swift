@@ -22,21 +22,22 @@ class ViewController: UIViewController {
     @IBOutlet weak var detailsButton: UIButton!
     
     @IBOutlet weak var convertButton: UIButton!
+    @IBOutlet weak var otherCurrenciesButton: UIButton!
     
     let disposeBag = DisposeBag()
-    let symbolsViewModel = HomeViewModel()
-    
-    
+    let homeViewModel = HomeViewModel()
+ 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-//                getSymbols()
-//                bindToPickerViews()
-//                select()
-//                bindResultToLable()
-//                bindAmountTextFieldToViewModel()
-//                subscribeToCovertButton()
+        getSymbols()
+        bindToPickerViews()
+        select()
+        bindResultToLable()
+        bindAmountTextFieldToViewModel()
+        subscribeToCovertButton()
+        subscribeOtherCurrenciesButton ()
 //        fetchTransaction()
         subscribeDetailsButton()
     }
@@ -57,13 +58,27 @@ class ViewController: UIViewController {
     
     func subscribeDetailsButton () {
         detailsButton.rx.tap.subscribe (onNext : {  _ in
-               
-             let historyViewController = HistoryViewController(nibName: "HistoryViewController", bundle: nil) as! HistoryViewController
+            
+            
+            let historyViewController = HistoryViewController(nibName: "HistoryViewController", bundle: nil)
             historyViewController.modalPresentationStyle = .fullScreen
             self.navigationController?.present(historyViewController, animated: true, completion: nil)
                                         
                                         
             }).disposed(by: disposeBag)
+    }
+    func subscribeOtherCurrenciesButton () {
+        
+        
+        otherCurrenciesButton.rx.tap.subscribe (onNext : { [self]  _ in
+            let otherCurrenciesViewController = OtherCurrenciesViewController(nibName: "OtherCurrenciesViewController", bundle: nil)
+            otherCurrenciesViewController.modalPresentationStyle = .fullScreen
+            self.navigationController?.present(otherCurrenciesViewController, animated: true, completion: nil)
+            
+                                        
+            }).disposed(by: disposeBag)
+        
+       
     }
     func subscribeToCovertButton() {
         convertButton.rx.tap.throttle(RxTimeInterval.microseconds(500), scheduler: MainScheduler.instance).subscribe(onNext : {[weak self](_) in
@@ -75,22 +90,22 @@ class ViewController: UIViewController {
     
     //    get symbols from viewModel
     func getSymbols () {
-        symbolsViewModel.fetchSymbolsFromApi()
+        homeViewModel.fetchSymbolsFromApi()
     }
     
     func converter() {
-        symbolsViewModel.convertCurrencyFromTo()
+        homeViewModel.convertCurrencyFromTo()
     }
     
     func bindResultToLable() {
         
-        self.symbolsViewModel.resultSubject.asObservable().map{text -> String? in
+        self.homeViewModel.resultSubject.asObservable().map{text -> String? in
             return Optional(text)
         }.bind(to:self.toTextField.rx.text)
             .disposed(by: disposeBag)
     }
     func bindAmountTextFieldToViewModel(){
-        fromTextField.rx.text.orEmpty.bind(to: symbolsViewModel.fromTextFieldBehavior).disposed(by: disposeBag)
+        fromTextField.rx.text.orEmpty.bind(to: homeViewModel.fromTextFieldBehavior).disposed(by: disposeBag)
         
         
     }
@@ -99,13 +114,13 @@ class ViewController: UIViewController {
     
     
     func bindToPickerViews() {
-        symbolsViewModel.symbolsSubject.bind(to:frompickerView.rx.itemTitles) {(row , element) in
+        homeViewModel.symbolsSubject.bind(to:frompickerView.rx.itemTitles) {(row , element) in
             
             return element
         }.disposed(by: disposeBag)
         
         
-        symbolsViewModel.symbolsSubject.bind(to:toPickerView.rx.itemTitles) {(row , element) in
+        homeViewModel.symbolsSubject.bind(to:toPickerView.rx.itemTitles) {(row , element) in
             return element
         }.disposed(by: disposeBag)
     }
@@ -123,13 +138,14 @@ class ViewController: UIViewController {
     
     func select() {
         
-        toPickerView.rx.itemSelected.map({row , component in
-            self.symbolsViewModel.symbolsSubject.value[row]
-        }).bind(to: self.symbolsViewModel.toPickerViewBehavior).disposed(by: disposeBag)
+        toPickerView.rx.itemSelected.map({ row , component in
+            self.homeViewModel.symbolsSubject.value[row]
+        }).bind(to: self.homeViewModel.toPickerViewBehavior)
+            .disposed(by: disposeBag)
         
         frompickerView.rx.itemSelected.map({row , component in
-            self.symbolsViewModel.symbolsSubject.value[row]
-        }).bind(to: self.symbolsViewModel.fromPickerViewBehavior).disposed(by: disposeBag)
+            self.homeViewModel.symbolsSubject.value[row]
+        }).bind(to: self.homeViewModel.fromPickerViewBehavior).disposed(by: disposeBag)
         
         
     }
