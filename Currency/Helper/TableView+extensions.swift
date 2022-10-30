@@ -7,7 +7,9 @@
 
 import Foundation
 import UIKit
-
+import RxDataSources
+import RxSwift
+import RxCocoa
 extension UITableView {
     
     func registerCell<Cell : UITableViewCell>(cell: Cell.Type) {
@@ -17,3 +19,4 @@ extension UITableView {
      
     }
 }
+

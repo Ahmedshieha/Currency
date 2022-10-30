@@ -11,7 +11,7 @@ import RxCocoa
 import Moya
 
 
- // class for handle api methods
+// class for handle api methods
 class ApiService {
     
     static let shared = ApiService()
@@ -22,7 +22,7 @@ class ApiService {
         plugins : [
             AccessTokenPlugin { _ in
                 return ""
-
+                
             },
             NetworkLoggerPlugin(configuration: NetworkLoggerPlugin.Configuration(logOptions : .verbose) )
         ]
@@ -30,7 +30,7 @@ class ApiService {
     
     
     // method to get available currencies
-
+    
     func getSymbolsWithMoya(completion : @escaping (Result <[String:String] , Error>)-> Void) {
         provider.request(.getSymbols) { result in
             switch result {
@@ -48,7 +48,7 @@ class ApiService {
             }
         }
     }
-      // method to convert from currency to another with parameters amount & from and to
+    // method to convert from currency to another with parameters amount & from and to
     
     func convertCurrency(amount : Int , from : String , to : String ,compoletion : @escaping (Result<Converter,Error> ) -> Void) {
         provider.request(.converter(amount, from , to)) { result in
@@ -58,7 +58,6 @@ class ApiService {
                     
                     let jsonData = try JSONDecoder().decode(Converter.self, from: response.data)
                     compoletion(.success(jsonData))
-                    print(jsonData.result)
                 }
                 catch let error {
                     print("\(error.localizedDescription) error in Decoder")
@@ -79,7 +78,6 @@ class ApiService {
                     
                     let jsonData = try JSONDecoder().decode(OtherCurrencies.self, from: response.data)
                     completion(.success(jsonData))
-            
                 }
                 catch let error {
                     print("\(error.localizedDescription) error in Decoder")
