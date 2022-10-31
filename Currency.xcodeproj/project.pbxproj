@@ -40,6 +40,7 @@
 		FAB9E364290E83C1007FF9C8 /* OtherCurrenciesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB9E362290E83C1007FF9C8 /* OtherCurrenciesTableViewCell.swift */; };
 		FAB9E365290E83C1007FF9C8 /* OtherCurrenciesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAB9E363290E83C1007FF9C8 /* OtherCurrenciesTableViewCell.xib */; };
 		FAB9E36E290F38D7007FF9C8 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB9E36D290F38D7007FF9C8 /* Date+Extensions.swift */; };
+		FAB9E370290F4791007FF9C8 /* Sections.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB9E36F290F4791007FF9C8 /* Sections.swift */; };
 		FF80F55E3CB0DEDE85DEAA6D /* Pods_Currency_CurrencyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EB983CE2EE413F859936D05 /* Pods_Currency_CurrencyUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -105,6 +106,7 @@
 		FAB9E362290E83C1007FF9C8 /* OtherCurrenciesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherCurrenciesTableViewCell.swift; sourceTree = "<group>"; };
 		FAB9E363290E83C1007FF9C8 /* OtherCurrenciesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OtherCurrenciesTableViewCell.xib; sourceTree = "<group>"; };
 		FAB9E36D290F38D7007FF9C8 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
+		FAB9E36F290F4791007FF9C8 /* Sections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sections.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,6 +206,7 @@
 			children = (
 				FAA22863290DD30F00D188B1 /* TableView+extensions.swift */,
 				FAB9E36D290F38D7007FF9C8 /* Date+Extensions.swift */,
+				FAB9E36F290F4791007FF9C8 /* Sections.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -583,6 +586,7 @@
 				FAA2285A290DA3AB00D188B1 /* ConverterModel+CoreDataProperties.swift in Sources */,
 				FA9A86D8290C32E80072BF48 /* Converter.swift in Sources */,
 				FAA22859290DA3AB00D188B1 /* ConverterModel+CoreDataClass.swift in Sources */,
+				FAB9E370290F4791007FF9C8 /* Sections.swift in Sources */,
 				FA3A01392909DD8E0080F89D /* AppDelegate.swift in Sources */,
 				FAB9E357290E6C0C007FF9C8 /* OtherCurrencies.swift in Sources */,
 				FAA22864290DD30F00D188B1 /* TableView+extensions.swift in Sources */,

@@ -22,9 +22,9 @@ class HistoryViewModel {
             }
             
             return dayTransactionDictionary.map {(key , value) in
-              return  SectionOfCustomData(header: key, items: value)
+                return  SectionOfCustomData(header: key, items: value)
             }.filter { sections in
-                 
+                
                 let interval = Date() - self.getDateAsDate(date: sections.header)
                 return interval.day! < 4
             }
@@ -38,7 +38,7 @@ class HistoryViewModel {
         return dateAsDate!
         
     }
-      // method to save data in coreData with some parameters
+    // method to save data in coreData with some parameters
     
     func saveToCoreData (date : String , amount : Int32 , from : String , to : String , result : Double) {
         
@@ -53,7 +53,7 @@ class HistoryViewModel {
     
     
     
-    // method to retrive Data from CoreData and pass it to transactionSubject 
+    // method to retrive Data from CoreData and pass it to transactionSubject
     func retriveDataFromCoreData () {
         do {
             guard let result = try PersistentStorage.shared.context.fetch(ConverterModel.fetchRequest()) as? [ConverterModel] else {return}

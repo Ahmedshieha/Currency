@@ -55,7 +55,8 @@ class HistoryViewController: UIViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: "HistoryTableViewCell", for: indexPath) as! HistoryTableViewCell
             cell.configureCell(from: transaction.from ?? "", to: transaction.to ?? "", amount: Int(transaction.amount), result: transaction.result)
             return cell
-        })
+        }
+)
         dataSource.titleForHeaderInSection = { dataSource , indexPath in
             return dataSource.sectionModels[indexPath].header
         }
@@ -76,15 +77,4 @@ class HistoryViewController: UIViewController {
 
 
 
-struct SectionOfCustomData {
-    var header: String
-    var items: [Item]
-}
-extension SectionOfCustomData: SectionModelType {
-    typealias Item = ConverterModel
-    
-    init(original: SectionOfCustomData, items: [Item]) {
-        self = original
-        self.items = items
-    }
-}
+
